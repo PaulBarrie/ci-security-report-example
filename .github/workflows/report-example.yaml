@@ -24,6 +24,6 @@ jobs:
         base-tag: '3.8-buster'
         new-tag: 'security-test'
         orga: 'PaulBarrie'
-        repo: 'ci-security-report'
+        repo: 'ci-security-report-example'
         pr-nb: ${{ github.event.number }}
         topic: 'github-example'

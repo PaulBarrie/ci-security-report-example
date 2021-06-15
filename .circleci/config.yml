@@ -9,9 +9,8 @@ executors:
 jobs:
   security-report-example:
     executor: security-report/default
-    working_directory: /root/security-report
+    working_directory: /home
     steps:
-      - checkout 
       - setup_remote_docker:
           docker_layer_caching: false
           version: 20.10.2
