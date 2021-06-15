@@ -1,16 +1,17 @@
 version: 2.1
 
 orbs:
-  security-report: dreamquark-ai/security-report@1.0.0
+  security-report: dreamquark-ai/security-report@1.0.1
 
 executors:
-  security-report: dreamquark-ai/security-report@1.0.0
+  security-report: dreamquark-ai/security-report@1.0.1
 
 jobs:
   security-report-example:
     executor: security-report/default
-    working_directory: /home
+    working_directory: /root/ci-example
     steps:
+      - checkout
       - setup_remote_docker:
           docker_layer_caching: false
           version: 20.10.2
@@ -24,8 +25,8 @@ jobs:
           image: 'python'
           base-tag: '3.8-buster'
           new-tag: 'security-test'
-          orga: 'dreamquark-ai'
-          repo: 'ci-security-report'
+          orga: 'PaulBarrie'
+          repo: 'ci-security-report-example'
           topic: 'circleci-example'
 
 workflows:

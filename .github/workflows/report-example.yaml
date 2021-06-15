@@ -16,7 +16,7 @@ jobs:
       run: docker build -t python:security-test -f example/Dockerfile .
 
     - name: "Security reports"
-      uses: dreamquark-ai/github-action-security-report@main
+      uses: dreamquark-ai/ci-security-report@main
       env:
         GITHUB_PAT: ${{secrets.PAT_SECURITY_REPORT_ACTION_EXAMPLE}}
       with:
