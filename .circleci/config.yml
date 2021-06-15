@@ -1,0 +1,36 @@
+version: 2.1
+
+orbs:
+  security-report: dreamquark-ai/security-report@1.0.0
+
+executors:
+  security-report: dreamquark-ai/security-report@1.0.0
+
+jobs:
+  security-report-example:
+    executor: security-report/default
+    working_directory: /root/security-report
+    steps:
+      - checkout 
+      - setup_remote_docker:
+          docker_layer_caching: false
+          version: 20.10.2
+      - run:
+          name: "Build & pull the images for security report"
+          command: |
+            docker pull python:3.8-buster
+            docker build -t python:security-test -f example/Dockerfile .
+            
+      - security-report/security-report:
+          image: 'python'
+          base-tag: '3.8-buster'
+          new-tag: 'security-test'
+          orga: 'dreamquark-ai'
+          repo: 'ci-security-report'
+          topic: 'circleci-example'
+
+workflows:
+  CI-security-test:
+    jobs:
+      - security-report-example:
+          context: security-report-example
