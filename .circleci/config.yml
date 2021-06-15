@@ -1,17 +1,10 @@
 version: 2.1
 
 orbs:
-<<<<<<< HEAD
   security-report: dreamquark-ai/security-report@1.0.1
 
 executors:
   security-report: dreamquark-ai/security-report@1.0.1
-=======
-  security-report: dreamquark-ai/security-report@dev:1.0.1
-
-executors:
-  security-report: dreamquark-ai/security-report@dev:1.0.1
->>>>>>> Updated config.yml
 
 jobs:
   security-report-example:
